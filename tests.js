@@ -2,26 +2,31 @@ const test = QUnit.test;
 
 
 function fizzBizz(num) {
-    if(num % 3 === 0) {
-        return 'Fizz';
+    if(num % 5 === 0 && num % 3 === 0) {
+        return 'fizzbizz';
+    }
+    else if(num % 3 === 0) {
+        return 'fizz';
     }     
+    else if(num % 5 === 0) {
+        return 'bizz';
+    }
 }
 
-fizzBizz(3);
+test ('numbers that are divisible by 3, replace with fizz', function(assert) {
+    const result = fizzBizz(3);
+    assert.equal(result, 'fizz');
+});
 
+test ('numbers that are divisible by 5, replace with bizz', function(assert) {
+    const result = fizzBizz(5);
+    assert.equal(result, 'bizz');
+});
 
-test ('numbers that are divisible by 3, replace with fizz'), function(assert) {
-    let fizzBizz = true;
-    assert.equal(true, 'Fizz');
-};
-
-
-
-
-
-
-
-
+test ('numbers that are divisible by 5 AND 3, replace with fizzbizz', function(assert) {
+    const result = fizzBizz(15);
+    assert.equal(result, 'fizzbizz');
+});
 
 
 
